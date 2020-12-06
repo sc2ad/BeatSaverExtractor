@@ -2,7 +2,7 @@ name: .NET Core
 on: [push, pull_request]
 
 env:
-  DOTNET_VERSION: '5.0.100'
+  DOTNET_VERSION: '5.0.100-rc.1.20452.10'
 
 jobs:
   build:
