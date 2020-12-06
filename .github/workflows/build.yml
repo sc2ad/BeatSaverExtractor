@@ -2,7 +2,7 @@ name: .NET Core
 on: [push, pull_request]
 
 env:
-  DOTNET_VERSION: '5.0.100-rc.1.20452.10'
+  DOTNET_VERSION: '5.0.100'
 
 jobs:
   build:
@@ -24,16 +24,16 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Install dependencies
-        working-directory: ./BeatSaberExtractor
+        working-directory: ./BeatSaverExtractor
         run: dotnet restore
       - name: Build ${{ matrix.runtime }}
-        working-directory: ./BeatSaberExtractor
+        working-directory: ./BeatSaverExtractor
         run: dotnet publish -r ${{ matrix.runtime }} -c Release
       - name: Artifact Upload ${{ matrix.runtime }}
         uses: actions/upload-artifact@v2
         with:
-          name: BeatSaberExtractor-${{ matrix.runtime }}
-          path: BeatSaberExtractor/bin/Release/net5.0/${{ matrix.runtime }}/publish/
+          name: BeatSaverExtractor-${{ matrix.runtime }}
+          path: BeatSaverExtractor/bin/Release/net5.0/${{ matrix.runtime }}/publish/
 
   checks:
     runs-on: ubuntu-latest
